@@ -9,11 +9,12 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: all .5s ease-in-out;
+    cursor: pointer;
 }
 
 .icon3DPLP:hover {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     transition: all .5s ease-in-out;
 }
 
