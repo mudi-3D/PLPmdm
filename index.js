@@ -102,13 +102,13 @@ function createModal(sku) {
         if (window.innerWidth > 1000) {
             !flagAR
                 ? (
-                    document.body.querySelector('.containerQRMudi').style.right = "-11%",
-                    changeStyleBtnAR(flagAR, rgba(0,113,206,.95)),
+                    document.body.querySelector('.containerQRMudi').style.right = "0%",
+                    changeStyleBtnAR(flagAR, "#0071cef2"),
                     flagAR = !flagAR
                 )
                 : (
                     document.body.querySelector('.containerQRMudi').style.right = "-150%",
-                    changeStyleBtnAR(flagAR, rgba(0,113,206,.95)),
+                    changeStyleBtnAR(flagAR, "#0071cef2"),
                     flagAR = !flagAR
                 )
         }
@@ -153,12 +153,12 @@ const createStylesPLP = () => {
 
 const searchCards = () => {
 
-console.log('Buscando cards')
+    console.log('Buscando cards')
 
     if (counterSearch === 1000) return;
 
     const allCards = document.querySelectorAll('.product-element-top')
-    
+
 
 
     console.log(allCards)
@@ -167,13 +167,13 @@ console.log('Buscando cards')
         counterSearch++;
         requestAnimationFrame(searchCards);
         return
-    
+
     };
 
-    for ( let i = 0; i < allCards.length; i++) {
+    for (let i = 0; i < allCards.length; i++) {
 
         let numberSKu = allCards[i].querySelector('.wd-add-btn a').getAttribute("data-product_sku");
-    
+
 
 
         if (SKUS.includes(numberSKu)) {
@@ -181,7 +181,7 @@ console.log('Buscando cards')
             /** Contenido de la imagen icono identificador 3D  */
             let ImageElement = document.createElement('DIV');
             ImageElement.classList.add('icon3DPLP');
-            ImageElement.addEventListener('click', ()=> {createModal(numberSKu)})
+            ImageElement.addEventListener('click', () => { createModal(numberSKu) })
             const father = allCards[i];
             father.appendChild(ImageElement);
         }
@@ -193,10 +193,4 @@ console.log('Buscando cards')
 
 createStylesPLP();
 
-setTimeout(()=>{ searchCards(); },1500)
-
-
-
-
-
-
+setTimeout(() => { searchCards(); }, 1500);
