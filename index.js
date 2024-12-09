@@ -1,4 +1,5 @@
 const SKUS = ["MAQ100106-002", "SEG020106-001", "MAQ0054", "MAQ0057", "MAQ0060", "MAQ0021"];
+
 /** Contador para detener la busqueda y revisión de las "cards" */
 let counterSearch = 0;
 
@@ -115,7 +116,7 @@ function createModal(sku) {
         else {
             window.open(`https://viewer.mudi.com.co/v1/ar/?id=436&sku=${sku}`, "_BLANK");
         }
-        flagAR && this.sendEventInteraction('AR')
+        //flagAR && this.sendEventInteraction('AR')
     });
 
     /** Verify Style Bttn AR  */
@@ -139,9 +140,6 @@ function createModal(sku) {
     document.body.appendChild(modalMudi)
 };
 
-
-
-
 const createStylesPLP = () => {
     if (document.head.querySelector('#PLPStyle')) return;
     const link = document.createElement('LINK')
@@ -159,10 +157,6 @@ const searchCards = () => {
 
     const allCards = document.querySelectorAll('.product-element-top')
 
-
-
-    console.log(allCards)
-
     if (allCards.length == 0) {
         counterSearch++;
         requestAnimationFrame(searchCards);
@@ -174,16 +168,15 @@ const searchCards = () => {
 
         let numberSKu = allCards[i].querySelector('.wd-add-btn a').getAttribute("data-product_sku");
 
-
-
         if (SKUS.includes(numberSKu)) {
-            console.log('enciontramos una card ')
+           
             /** Contenido de la imagen icono identificador 3D  */
             let ImageElement = document.createElement('DIV');
             ImageElement.classList.add('icon3DPLP');
             ImageElement.addEventListener('click', () => { createModal(numberSKu) })
             const father = allCards[i];
             father.appendChild(ImageElement);
+
         }
 
     };
@@ -193,4 +186,4 @@ const searchCards = () => {
 
 createStylesPLP();
 
-setTimeout(() => { searchCards(); }, 1500);
+setTimeout(() => { searchCards(); }, 1500)
